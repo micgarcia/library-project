@@ -4,13 +4,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Library</title>
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-  <form action="" method="get">
-    <input type="text" id="name">
-    <input type="submit" name="name" id="enter" onclick="addBookToLibrary()">
-  </form>
+
+  <div id="form">
+    <label for="name">Title: </label>
+    <input type="text" name="name" id="name">
+    <label for="author">Author: </label>
+    <input type="text" name="author" id="author">
+    <label for="pages">Pages: </label>
+    <input type="text" name="pages" id="pages">
+    <label for="hasRead">Have You Read It: </label>
+    <input type="text" name="hasRead" id="hasRead">
+    <button type="submit" id="enter">Submit</button>
+  </div>
+
+  <button id="newBook">New Book</button>
+  <button id="cancel">Cancel</button>
+
+
+
+  <div id="grid">
+    Grid
+  </div>
 
   <script type="text/javascript" src="books.js"></script>
 
