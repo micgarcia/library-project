@@ -9,7 +9,7 @@ function Books(title, author, pages, hasRead) {
   this.hasRead = hasRead;
 };
 
-/* Function to reveal or hide form */
+/* Functions to reveal or hide form */
 function revealForm() {
   const form = document.getElementById('form');
   const cancel = document.getElementById('cancel');
@@ -37,6 +37,12 @@ cancel.addEventListener('click', hideForm)
    function that posts book to DOM */
 function addBookToLibrary() {
 
+  /* Clears text input fields after adding book */
+  var inputs = document.getElementsByTagName('input');
+  for (e of inputs) {
+    e.value = '';
+  }
+
   var title = document.getElementById('name').value;
   var author = document.getElementById('author').value;
   var pages = document.getElementById('pages').value;
@@ -55,6 +61,9 @@ button.addEventListener("click", addBookToLibrary);
 
 /* Adds books in library to DOM */
 function addBookToDOM() {
+
+
+
   document.getElementById('grid').innerHTML = '';
   for (var i = 0; i < myLibrary.length; i++) {
     /* Creates a card for each book */
@@ -87,6 +96,7 @@ function addBookToDOM() {
     remove.classList.add('remove');
     remove.textContent = 'Remove Book';
     remove.setAttribute('data-index', i)
+    remove.onclick = removeBook;
     bookCard.appendChild(remove);
 
 
@@ -94,20 +104,15 @@ function addBookToDOM() {
   }
 }
 
-const remove = document.getElementsByClassName('remove');
-if (remove) {
-  remove.addEventListener('click', function(e) {
-    var index = e.getAttribute('data-index');
-    removeBook(index);
-  });
-}
-
-
-function removeBook(index) {
+function removeBook() {
+  var index = this.index;
   myLibrary.splice(index, 1);
+  addBookToDOM();
 }
 
-/* Adding button to remove book from library
-  - add data-index attribute to bookCard when adding to DOM
-  - data-index should be set to i, which corresponds to the myLibrary index
-  - When delete button is pressed, javascript function should remove that index item from myLibrary*/
+var removeButton = document.getElementsByClassName('remove');
+for (var i = 0; i < removeButton.length; i++) {
+  removeButton[i].addEventListener('click', removeBook);
+}
+
+
