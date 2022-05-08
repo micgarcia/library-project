@@ -7,7 +7,17 @@ function Books(title, author, pages, hasRead) {
   this.author = author;
   this.pages = pages;
   this.hasRead = hasRead;
+  this.toggleReadStatus = function() {
+    var status = this.hasRead.toLowerCase();
+
+    if (status.includes('yes')) {
+      this.hasRead = 'No';
+    } else {
+      this.hasRead = 'Yes';
+    }
+  }
 };
+
 
 /* Functions to reveal or hide form */
 function revealForm() {
@@ -37,12 +47,6 @@ cancel.addEventListener('click', hideForm)
    function that posts book to DOM */
 function addBookToLibrary() {
 
-  /* Clears text input fields after adding book */
-  var inputs = document.getElementsByTagName('input');
-  for (e of inputs) {
-    e.value = '';
-  }
-
   var title = document.getElementById('name').value;
   var author = document.getElementById('author').value;
   var pages = document.getElementById('pages').value;
@@ -62,7 +66,11 @@ button.addEventListener("click", addBookToLibrary);
 /* Adds books in library to DOM */
 function addBookToDOM() {
 
-
+   /* Clears text input fields after adding book */
+   var inputs = document.getElementsByTagName('input');
+   for (e of inputs) {
+     e.value = '';
+   }
 
   document.getElementById('grid').innerHTML = '';
   for (var i = 0; i < myLibrary.length; i++) {
@@ -89,15 +97,22 @@ function addBookToDOM() {
 
     var bookRead = document.createElement('p');
     bookRead.classList.add('bookRead');
-    bookRead.textContent = 'Have You Read It?: ' +myLibrary[i].hasRead;
+    bookRead.textContent = 'Have You Read It?: ' + myLibrary[i].hasRead;
     bookCard.appendChild(bookRead)
 
     var remove = document.createElement('button');
     remove.classList.add('remove');
     remove.textContent = 'Remove Book';
-    remove.setAttribute('data-index', i)
+    remove.setAttribute('data-index', i);
     remove.onclick = removeBook;
     bookCard.appendChild(remove);
+
+    var toggle = document.createElement('button');
+    toggle.classList.add('toggle');
+    toggle.textContent = 'Change Read Status';
+    toggle.setAttribute('data-index', i);
+    toggle.onclick = toggleRead;
+    bookCard.appendChild(toggle);
 
 
     document.getElementById('grid').appendChild(bookCard);
@@ -105,14 +120,17 @@ function addBookToDOM() {
 }
 
 function removeBook() {
-  var index = this.index;
+  var index = this.dataset.index;
   myLibrary.splice(index, 1);
   addBookToDOM();
 }
 
-var removeButton = document.getElementsByClassName('remove');
-for (var i = 0; i < removeButton.length; i++) {
-  removeButton[i].addEventListener('click', removeBook);
+
+
+function toggleRead()  {
+  var index = this.dataset.index;
+  myLibrary[index].toggleReadStatus();
+  addBookToDOM();
 }
 
 
