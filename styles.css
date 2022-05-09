@@ -49,8 +49,35 @@ table {
 
 
 html {
-	font-family: 'Roboto Flex', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	color: rgb(240, 240, 240);
 }
+
+body {
+	height: 100vh;
+	width: 100%;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+button {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	background-color: #D79771;
+	color: white;
+	box-shadow: 1px 1px 3px rgb(79, 78, 78);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 600,
+  'GRAD' 0,
+  'opsz' 48
+}
+
 
 
 /*
@@ -61,12 +88,39 @@ html {
 
 h1 {
 	font-size: 40px;
-	padding: 0.5em 0 1em 0.5em;
+	padding: 0.6em 0 1em 1.5em;
+	font-weight: 600;
 }
 
 .header {
-	background-color: rgb(205, 205, 205);
+	display: grid;
+	grid-template-columns: 400px minmax(500px, 1fr);
+	grid-template-rows: 1fr 2fr;
+	background-color: #753422;
 	padding-bottom: 1em;
+	box-shadow: 0 3px 3px rgb(150, 150, 150);
+	position: relative;
+	overflow: auto;
+}
+
+.header::-webkit-scrollbar {
+	display: none;
+}
+
+.profile {
+	display: grid;
+	grid-template-columns: 3fr 160px;
+	justify-items: right;
+	font-size: 20px;
+	font-weight: 500;
+	padding-top: 1.5em;
+	padding-right: 1.5em;
+}
+
+.intro {
+	grid-row: 2 / 3;
+	grid-column: 2 / 3;
+	font-size: 18px;
 }
 
 
@@ -89,6 +143,7 @@ h1 {
 label {
 	text-align: right;
 	font-size: 18px;
+	font-weight: 500;
 }
 
 input {
@@ -108,21 +163,37 @@ input {
 	left: 2em;
 }
 
+#enter:hover {
+	background-color: #FFEBC9;
+	color: #753422;
+}
+
 #newBook {
-	margin: 0 0 0 1.5em;
+	margin: 0 0 0 4.5em;
 	border-style: none;
 	border-radius: 5px;
 	height: 2em;
 	width: 8em;
 }
 
+#newBook:hover {
+	background-color: #FFEBC9;
+	color: #753422;
+}
+
 #cancel {
 	display: none;
-	margin: 2em 0 1em 1.5em;
+	margin: 1.5em 0 0.5em 14.6em;
 	border-style: none;
 	border-radius: 5px;
 	width: 5em;
 	height: 2em;
+	grid-column: 1 / 2;
+}
+
+#cancel:hover {
+	background-color: #FFEBC9;
+	color: #753422;
 }
 
 button:hover {
@@ -138,19 +209,22 @@ button:hover {
 */
 
 #grid {
+	min-height: 100vh;
+	height: auto;
 	display: grid;
 	grid-template-rows: repeat(3, 1fr);
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	row-gap: 3em;
 	padding-top: 2em;
 	padding-bottom: 2em;
+	background-color: #FFEBC9;
 }
 
 .bookCard {
 	display: grid;
 	grid-template-rows: repeat(6, 1fr);
 	grid-template-columns: 1fr;
-	background-color: rgb(238, 238, 238);
+	background-color: #D79771;
 	align-items: center;
 	row-gap: 1em;
 	padding: 1em 0 1em 1em;
@@ -158,6 +232,9 @@ button:hover {
 	position: relative;
 	left: 12.5%;
 	border-radius: 8px;
+	box-shadow: 3px 3px 3px rgb(150, 150, 150);
+
+	font-weight: 500;
 }
 
 
@@ -172,7 +249,11 @@ button:hover {
 	height: 2em;
 	border-style: none;
 	border-radius: 5px;
-	background-color: white;
+	background-color: #B05B3B;
+}
+
+.remove:hover {
+	background-color: #753422;
 }
 
 .toggle {
@@ -180,7 +261,10 @@ button:hover {
 	height: 3em;
 	border-style: none;
 	border-radius: 5px;
-	background-color: white;
+	background-color: #B05B3B;
+}
 
+.toggle:hover {
+	background-color: #753422;
 }
 
