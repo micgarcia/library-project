@@ -48,17 +48,139 @@ table {
 }
 
 
+html {
+	font-family: 'Roboto Flex', sans-serif;
+}
+
+
+/*
+	==============
+	Header
+	==============
+*/
+
+h1 {
+	font-size: 40px;
+	padding: 0.5em 0 1em 0.5em;
+}
+
+.header {
+	background-color: rgb(205, 205, 205);
+	padding-bottom: 1em;
+}
+
+
+/*
+	==============
+	Form
+	==============
+*/
 
 #form {
 	display: none;
+	grid-template-rows: repeat(3, 1fr);
+	grid-template-columns: minmax(140px, 0.25fr) 2fr;
+	align-items: center;
+	row-gap: 1em;
+	column-gap: 0.5em;
+
+}
+
+label {
+	text-align: right;
+	font-size: 18px;
+}
+
+input {
+	min-width: 200px;
+	max-width: 30%;
+	height: 1.5em;
+	border-style: none;
+	border-radius: 5px;
+}
+
+#enter {
+	width: 8em;
+	height: 2em;
+	border-style: none;
+	border-radius: 5px;
+	position: relative;
+	left: 2em;
+}
+
+#newBook {
+	margin: 0 0 0 1.5em;
+	border-style: none;
+	border-radius: 5px;
+	height: 2em;
+	width: 8em;
 }
 
 #cancel {
 	display: none;
+	margin: 2em 0 1em 1.5em;
+	border-style: none;
+	border-radius: 5px;
+	width: 5em;
+	height: 2em;
 }
+
+button:hover {
+	cursor: pointer;
+
+}
+
+
+/*
+	==============
+	Grid
+	==============
+*/
+
+#grid {
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	row-gap: 3em;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
 .bookCard {
-
-
+	display: grid;
+	grid-template-rows: repeat(6, 1fr);
+	grid-template-columns: 1fr;
+	background-color: rgb(238, 238, 238);
+	align-items: center;
+	row-gap: 1em;
+	padding: 1em 0 1em 1em;
+	max-width: 75%;
+	position: relative;
+	left: 12.5%;
+	border-radius: 8px;
 }
 
+
+/*
+	==============
+	Book Card
+	==============
+*/
+
+.remove {
+	width: 8em;
+	height: 2em;
+	border-style: none;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.toggle {
+	width: 10em;
+	height: 3em;
+	border-style: none;
+	border-radius: 5px;
+	background-color: white;
+
+}
 

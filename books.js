@@ -9,7 +9,6 @@ function Books(title, author, pages, hasRead) {
   this.hasRead = hasRead;
   this.toggleReadStatus = function() {
     var status = this.hasRead.toLowerCase();
-
     if (status.includes('yes')) {
       this.hasRead = 'No';
     } else {
@@ -23,17 +22,20 @@ function Books(title, author, pages, hasRead) {
 function revealForm() {
   const form = document.getElementById('form');
   const cancel = document.getElementById('cancel');
-  form.style.display = 'block'
-  cancel.style.display = 'block'
+  const newBook = document.getElementById('newBook');
+  form.style.display = 'grid';
+  cancel.style.display = 'block';
+  newBook.style.display = 'none';
 
 }
 
 function hideForm() {
   const form = document.getElementById('form');
   const cancel = document.getElementById('cancel')
-
-  form.style.display = 'none'
-  cancel.style.display = 'none'
+  const newBook = document.getElementById('newBook');
+  form.style.display = 'none';
+  cancel.style.display = 'none';
+  newBook.style.display = 'block';
 }
 
 const newBook = document.getElementById('newBook');
