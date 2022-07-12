@@ -61,8 +61,8 @@ function addBookToLibrary() {
 }
 
 /* listener event for adding book form */
-const button = document.getElementById('enter');
-button.addEventListener("click", addBookToLibrary);
+// const button = document.getElementById('enter');
+// button.addEventListener("click", addBookToLibrary);
 
 
 /* Adds books in library to DOM */
@@ -134,5 +134,26 @@ function toggleRead()  {
   myLibrary[index].toggleReadStatus();
   addBookToDOM();
 }
+
+
+const bookName = document.getElementById('name');
+bookName.addEventListener("input", function () {
+  if (bookName.validity.valueMissing) {
+    bookName.setCustomValidity('Field Must Not Be Empty');
+    bookName.reportValidity();
+  } else {
+    email.setCustomValidity('');
+  }
+})
+
+const enter = document.getElementById('enter');
+
+enter.addEventListener('click', function(event) {
+  if(!bookName.validity.valid) {
+    bookName.reportValidity();
+  } else {
+    addBookToLibrary();
+  }
+})
 
 
